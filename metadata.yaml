@@ -1,0 +1,5 @@
+homepage: "https://stileo.it",
+documentation: "https://pixel.stileo.it/Gtm",
+versions:
+  - sha: 2b8abf6287afd3c58c0441c0f8c93cd9bb4e357e
+    changeNotes: Init
