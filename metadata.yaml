@@ -1,5 +1,9 @@
 homepage: "https://stileo.it",
 documentation: "https://pixel.stileo.it/Gtm",
 versions:
+  # Latest version
+  - sha: 4b75057bec8b3a035c33e52df4ec5ee7234a45fa
+    changeNotes: Documentation change
+  # Older versions
   - sha: 4b75057bec8b3a035c33e52df4ec5ee7234a45fa
     changeNotes: Init
