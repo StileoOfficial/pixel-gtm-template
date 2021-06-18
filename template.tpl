@@ -574,6 +574,7 @@ const injectScript = require('injectScript');
 const callInWindow = require('callInWindow');
 const log = require('logToConsole');
 const set = require('setInWindow');
+const JSON = require('JSON');
 const createArgumentsQueue = require('createArgumentsQueue');
 const readFromDataLayer = require('copyFromDataLayer');
 const createQueue = require('createQueue');
@@ -581,12 +582,13 @@ const createQueue = require('createQueue');
 let stileoObject = function(){
   createArgumentsQueue('stileo','stileoObject.queue');
 };
-  
+
 set('stileo', stileoObject);
 set('stileo.version', 2.1);
 set('stileo.queue', []);
 
 const onSuccess = function () {  
+  
   
   let ecommerceDl = readFromDataLayer('ecommerce');
   
@@ -631,7 +633,11 @@ const onSuccess = function () {
     }
     
     if(data.purchaseProductsOption === 'purchaseProductsOptionGtm'){
-      eventObject.Products = data.purchaseProducts;
+      if(typeof data.purchaseProducts === 'string'){
+        eventObject.Products = JSON.parse(data.purchaseProducts);
+      }else{
+        eventObject.Products = data.purchaseProducts;
+      }  
     }
         
     callInWindow('stileo','track','Purchase', eventObject);
@@ -643,7 +649,7 @@ const onSuccess = function () {
     let eventObject = {
       ContentType: data.viewContentType,
       Currency: data.currency,
-      CategoryPath: data.viewContentCategory,
+      CategoryPath: data.viewContentCategoryPath,
       Products: [],
     };
     
@@ -663,8 +669,12 @@ const onSuccess = function () {
         });   
       }
       
-      if(data.viewContentProductsOption === 'addToCartProductsOptionGtm'){
-        eventObject.Products = data.viewContentProductsGtm;
+      if(data.viewContentProductsOption === 'viewContentProductsGtm'){
+        if(typeof data.viewContentProductsGtm === 'string'){
+          eventObject.Products = JSON.parse(data.viewContentProductsGtm);
+        }else{
+          eventObject.Products = data.viewContentProductsGtm;
+        }
       }
     }else if(data.viewContentType === 'ProductsGroup'){
       
@@ -682,14 +692,20 @@ const onSuccess = function () {
         });   
       }
       
-      if(data.viewContentProductsOption === 'addToCartProductsOptionGtm'){
-        eventObject.Products = data.viewContentProductsGtm;
+      if(data.viewContentProductsOption === 'viewContentProductsGtm'){
+        if(typeof data.viewContentProductsGtm === 'string'){
+          eventObject.Products = JSON.parse(data.viewContentProductsGtm);
+        }else{
+          eventObject.Products = data.viewContentProductsGtm;
+        }
       }
       
     }else{
-      
-      eventObject.Products = data.viewContentProducts;
-      
+        if(typeof data.viewContentProductsGtm === 'string'){
+          eventObject.Products = JSON.parse(data.viewContentProductsGtm);
+        }else{
+          eventObject.Products = data.viewContentProductsGtm;
+        }
     }
     
     callInWindow('stileo','track','ViewContent', eventObject);
@@ -719,7 +735,11 @@ const onSuccess = function () {
     }
     
     if(data.addToCartProductsOption === 'addToCartProductsOptionGtm'){
-      eventObject.Products = data.purchaseProducts;
+      if(typeof data.addToCartProducts === 'string'){
+        eventObject.Products = JSON.parse(data.addToCartProducts);
+      }else{
+        eventObject.Products = data.addToCartProducts;
+      }
     }
     
     callInWindow('stileo','track','AddToCart', eventObject);
@@ -728,8 +748,14 @@ const onSuccess = function () {
   if(data.eventType === 'ProductFavourite'){
     
     let eventObject = {
-      Products: data.productFavouriteProducts
+      Products: []
     };
+    
+    if(typeof data.productFavouriteProducts === 'string'){
+      eventObject.Products = JSON.parse(data.productFavouriteProducts);
+    }else{
+      eventObject.Products = data.productFavouriteProducts;
+    }
         
     callInWindow('stileo','track','ProductFavourite', eventObject);
   }
@@ -737,7 +763,6 @@ const onSuccess = function () {
   if(data.eventType === 'GoToCheckout'){
     
     let eventObject = {
-      OrderId: '',
       Currency: data.currency,
       Products: [],
     };
@@ -758,7 +783,11 @@ const onSuccess = function () {
     }
     
     if(data.goToCheckoutProductsOption === 'goToCheckoutProductsOptionGtm'){
-      eventObject.Products = data.purchaseProducts;
+      if(typeof data.goToCheckoutProducts === 'string'){
+        eventObject.Products = JSON.parse(data.goToCheckoutProducts);
+      }else{
+        eventObject.Products = data.goToCheckoutProducts;
+      }
     }
             
     callInWindow('stileo','track','GoToCheckout', eventObject);
