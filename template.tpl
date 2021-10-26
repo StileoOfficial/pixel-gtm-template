@@ -653,9 +653,9 @@ const onSuccess = function () {
       Products: [],
     };
     
-    if(data.viewContentType === 'Product'){
+    if(data.viewContentType === 'product'){
       
-      if(data.viewContentProductsOption === 'viewContentProductsOptionEedl' && typeof ecommerceDl.detail !== 'undefined'){
+      if(data.viewContentProductsOption === 'viewContentProductsEedl' && typeof ecommerceDl.detail !== 'undefined'){
             
         ecommerceDl.detail.products.forEach( product => {
           let pixelProduct = {
