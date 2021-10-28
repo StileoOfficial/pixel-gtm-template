@@ -676,7 +676,7 @@ const onSuccess = function () {
           eventObject.Products = data.viewContentProductsGtm;
         }
       }
-    }else if(data.viewContentType === 'ProductsGroup'){
+    }else if(data.viewContentType === 'productGroup'){
       
       if(data.viewContentProductsOption === 'viewContentProductsEedl' && typeof ecommerceDl.impressions !== 'undefined'){
             
