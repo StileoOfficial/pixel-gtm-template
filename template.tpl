@@ -412,19 +412,19 @@ ___TEMPLATE_PARAMETERS___
         "macrosInSelect": false,
         "selectItems": [
           {
-            "value": "product",
+            "value": "Product",
             "displayValue": "Product"
           },
           {
-            "value": "productGroup",
+            "value": "ProductGroup",
             "displayValue": "ProductGroup"
           },
           {
-            "value": "homePage",
+            "value": "HomePage",
             "displayValue": "HomePage"
           },
           {
-            "value": "search",
+            "value": "Search",
             "displayValue": "Search"
           }
         ],
@@ -469,12 +469,12 @@ ___TEMPLATE_PARAMETERS___
         "enablingConditions": [
           {
             "paramName": "viewContentType",
-            "paramValue": "product",
+            "paramValue": "Product",
             "type": "EQUALS"
           },
           {
             "paramName": "viewContentType",
-            "paramValue": "productGroup",
+            "paramValue": "ProductGroup",
             "type": "EQUALS"
           }
         ]
@@ -513,12 +513,12 @@ ___TEMPLATE_PARAMETERS___
         "enablingConditions": [
           {
             "paramName": "viewContentType",
-            "paramValue": "homePage",
+            "paramValue": "HomePage",
             "type": "EQUALS"
           },
           {
             "paramName": "viewContentType",
-            "paramValue": "search",
+            "paramValue": "Search",
             "type": "EQUALS"
           }
         ]
@@ -653,7 +653,7 @@ const onSuccess = function () {
       Products: [],
     };
     
-    if(data.viewContentType === 'product'){
+    if(data.viewContentType === 'Product'){
       
       if(data.viewContentProductsOption === 'viewContentProductsEedl' && typeof ecommerceDl.detail !== 'undefined'){
             
@@ -676,7 +676,7 @@ const onSuccess = function () {
           eventObject.Products = data.viewContentProductsGtm;
         }
       }
-    }else if(data.viewContentType === 'productGroup'){
+    }else if(data.viewContentType === 'ProductGroup'){
       
       if(data.viewContentProductsOption === 'viewContentProductsEedl' && typeof ecommerceDl.impressions !== 'undefined'){
             
