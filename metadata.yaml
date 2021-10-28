@@ -2,9 +2,11 @@ homepage: "https://stileo.it",
 documentation: "https://pixel.stileo.it/Gtm",
 versions:
   # Latest version
+  - sha: fdfc7e49e80163c5769d263d3506895e5007e68b
+    changeNotes: Fix bugs in ViewContent event
+  # Older versions
   - sha: ac876668c1f4611c1b509a8c4653a0a3f823f5d8
     changeNotes: Allow to pass JSON in GTM variable and fix bugs
-  # Older versions
   - sha: 1fab15850a9c7c6657f9d24abb34b2ac8ef433f5
     changeNotes: Documentation change
   - sha: 4b75057bec8b3a035c33e52df4ec5ee7234a45fa
